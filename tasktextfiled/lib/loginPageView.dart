@@ -26,18 +26,25 @@ class _LoginViewPageState extends State<LoginViewPage> {
   final TextEditingController _emailTexeditingController =
       TextEditingController();
 
-  String nameSend = '';
-  String lastNameSend = "";
-  String passwordSend = "";
-  //int? passwordSend = 0;
-  String emailSend = "";
+  // String nameSend = '';
+  // String lastNameSend = "";
+  // String passwordSend = "";
+  // //int? passwordSend = 0;
+  // String emailSend = "";
   void refreshInfo() {
     setState(() {
-      nameSend = _nameTexteditingController.text;
-      lastNameSend = _lastNameTexteditingController.text;
-      // passwordSend = int.parse(_passwordTexeditingController.toString());
-      passwordSend = _passwordTexeditingController.text;
-      emailSend = _emailTexeditingController.text;
+      context.navigateToPage(
+        HomePage(
+            nameInfo: _nameTexteditingController.text,
+            lastNameInfo: _lastNameTexteditingController.text,
+            emailInfo: _emailTexeditingController.text,
+            passwordInfo: _passwordTexeditingController.text),
+      );
+      // nameSend = _nameTexteditingController.text;
+      // lastNameSend = _lastNameTexteditingController.text;
+      // // passwordSend = int.parse(_passwordTexeditingController.toString());
+      // passwordSend = _passwordTexeditingController.text;
+      // emailSend = _emailTexeditingController.text;
     });
   }
 
@@ -100,12 +107,12 @@ class _LoginViewPageState extends State<LoginViewPage> {
                     child: ElevatedButton.icon(
                         onPressed: () {
                           setState(() {
-                            context.navigateToPage(HomePage(
-                              nameInfo: nameSend.toString(),
-                              lastNameInfo: lastNameSend.toString(),
-                              emailInfo: emailSend.toString(),
-                              passwordInfo: passwordSend.toString(),
-                            ));
+                            // context.navigateToPage(HomePage(
+                            //   nameInfo: nameSend.toString(),
+                            //   lastNameInfo: lastNameSend.toString(),
+                            //   emailInfo: emailSend.toString(),
+                            //   passwordInfo: passwordSend.toString(),
+                            // ));
                             refreshInfo();
                           });
                         },
