@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tasktextfiled/const/AppColor.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -13,7 +12,7 @@ class HomePage extends StatefulWidget {
   final String nameInfo;
   final String lastNameInfo;
   final String emailInfo;
-  final String passwordInfo;
+  final int? passwordInfo;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -29,9 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.containerColor,
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -80,5 +77,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Text CustomText(text) => Text(text);
+  Text CustomText(text) => Text(
+        text,
+        style: TextStyle(color: Theme.of(context).hintColor),
+      );
 }

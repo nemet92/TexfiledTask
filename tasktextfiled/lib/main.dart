@@ -31,7 +31,28 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: isThemeLight ? ThemeData.dark() : ThemeData.light(),
+        theme: isThemeLight
+            ? ThemeData.dark().copyWith(
+                elevatedButtonTheme: ElevatedButtonThemeData(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black38))),
+                inputDecorationTheme:
+                    const InputDecorationTheme(suffixIconColor: Colors.black),
+                textSelectionTheme:
+                    const TextSelectionThemeData(selectionColor: Colors.green),
+                backgroundColor: Colors.yellow,
+                appBarTheme: const AppBarTheme(backgroundColor: Colors.yellow))
+            : ThemeData.light().copyWith(
+                elevatedButtonTheme: ElevatedButtonThemeData(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.amber))),
+                inputDecorationTheme:
+                    const InputDecorationTheme(suffixIconColor: Colors.black),
+                appBarTheme: const AppBarTheme(backgroundColor: Colors.yellow),
+                backgroundColor: Colors.yellow,
+                textTheme: const TextTheme(headline1: TextStyle(fontSize: 20))),
         home: LoginViewPage(
           icon: Icon(iconBool ? Icons.wb_sunny : Icons.nights_stay),
           onPressed: () {

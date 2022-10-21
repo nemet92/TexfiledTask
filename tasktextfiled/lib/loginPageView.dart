@@ -26,11 +26,6 @@ class _LoginViewPageState extends State<LoginViewPage> {
   final TextEditingController _emailTexeditingController =
       TextEditingController();
 
-  // String nameSend = '';
-  // String lastNameSend = "";
-  // String passwordSend = "";
-  // //int? passwordSend = 0;
-  // String emailSend = "";
   void refreshInfo() {
     setState(() {
       context.navigateToPage(
@@ -38,13 +33,8 @@ class _LoginViewPageState extends State<LoginViewPage> {
             nameInfo: _nameTexteditingController.text,
             lastNameInfo: _lastNameTexteditingController.text,
             emailInfo: _emailTexeditingController.text,
-            passwordInfo: _passwordTexeditingController.text),
+            passwordInfo: int.tryParse(_passwordTexeditingController.text)),
       );
-      // nameSend = _nameTexteditingController.text;
-      // lastNameSend = _lastNameTexteditingController.text;
-      // // passwordSend = int.parse(_passwordTexeditingController.toString());
-      // passwordSend = _passwordTexeditingController.text;
-      // emailSend = _emailTexeditingController.text;
     });
   }
 
@@ -52,8 +42,13 @@ class _LoginViewPageState extends State<LoginViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColor.containerColor,
-        actions: [IconButton(onPressed: widget.onPressed, icon: widget.icon)],
+        actions: [
+          IconButton(
+            onPressed: widget.onPressed,
+            icon: widget.icon,
+            color: Colors.black,
+          )
+        ],
       ),
       body: Center(
         child: Container(
@@ -93,6 +88,7 @@ class _LoginViewPageState extends State<LoginViewPage> {
                     controller: _passwordTexeditingController,
                     hintText: 'Şifrə',
                     suffixIcon: AppPath.passwordSuffixIcon,
+                    textInputType: TextInputType.number,
                   ),
                   sizedBox(),
                   CustomTextFiled(
@@ -107,12 +103,6 @@ class _LoginViewPageState extends State<LoginViewPage> {
                     child: ElevatedButton.icon(
                         onPressed: () {
                           setState(() {
-                            // context.navigateToPage(HomePage(
-                            //   nameInfo: nameSend.toString(),
-                            //   lastNameInfo: lastNameSend.toString(),
-                            //   emailInfo: emailSend.toString(),
-                            //   passwordInfo: passwordSend.toString(),
-                            // ));
                             refreshInfo();
                           });
                         },

@@ -6,6 +6,7 @@ class CustomTextFiled extends StatelessWidget {
     required this.controller,
     required this.suffixIcon,
     this.prefixIcon,
+    this.textInputType,
     //  this.hintTextStyle,
     Key? key,
   }) : super(key: key);
@@ -13,18 +14,21 @@ class CustomTextFiled extends StatelessWidget {
   final TextEditingController controller;
   final Icon suffixIcon;
   final Icon? prefixIcon;
+  final TextInputType? textInputType;
+
   // final TextStyle hintTextStyle;
+
   @override
   Widget build(BuildContext context) {
     return TextField(
+      keyboardType: textInputType,
       style: const TextStyle(color: Colors.black),
       controller: controller,
       decoration: InputDecoration(
-          filled: true,
           hintText: hintText,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          suffixIconColor: Colors.red,
+          // suffixIconColor: Theme.of(context).disabledColor,
           hintStyle: const TextStyle(color: Colors.black),
           enabledBorder: const OutlineInputBorder(),
           focusedBorder: const OutlineInputBorder(),
